@@ -1,0 +1,18 @@
+{
+  "rules": {
+    "users": {
+      ".read": "auth != null && (auth.token.email_verified === true || (auth.token.email === 'elipark@gmail.com' || auth.token.email === 'neudud@gmail.com'))",
+      "$uid": {
+        ".write": "auth != null && auth.uid === $uid && auth.token.email_verified === true",
+        "profile": {
+          ".read": "auth != null && (auth.uid === $uid || auth.token.email_verified === true || (auth.token.email === 'elipark@gmail.com' || auth.token.email === 'neudud@gmail.com'))",
+          ".write": "auth != null && auth.uid === $uid"
+        },
+        "stickers": {
+          ".read": "auth != null && (auth.token.email_verified === true || (auth.token.email === 'elipark@gmail.com' || auth.token.email === 'neudud@gmail.com'))",
+          ".write": "auth != null && auth.uid === $uid && auth.token.email_verified === true"
+        }
+      }
+    }
+  }
+}
